@@ -1,0 +1,145 @@
+body,dl,dd,ul,ol,h1,h2,h3,h4,h5,h6,form,input,textarea,th,td,p { margin:0;padding:0; }
+html,body { font-family:"PingFang SC,HanHei SC,Helvetica Neue,Helvetica,sans-serif",Helvetica,Arial,sans-serif; width: 100%;height: 100%; overflow-y:scroll; }
+body {  margin:0; }
+table { border-collapse:collapse; }
+strong { font-weight:normal; }
+img { border:none; vertical-align:top; max-width: 100%; height: auto; }
+li{ list-style:none; }
+em{ font-style:normal; }
+a{ text-decoration:none; }
+textarea{ resize:none; overflow:auto;}
+input,textarea,select,label{ outline:none; }
+input{ -webkit-appearance:none; }
+
+.clearfix:before, .clearfix:after { content: ""; display: table; }
+.clearfix:after { clear: both; }
+.clearfix { *zoom:1;/*ie6,7*/ clear:both; }
+
+*{box-sizing: border-box;}
+
+body{
+	background-color: #eee;
+	font-size: 15px;
+}
+
+.container{
+	position: relative;
+	width: 375px;
+	height: 667px;
+	background-color: #fff;
+	margin: 30px auto;
+	overflow: hidden;
+}
+@media(max-width: 600px){
+	.container{
+		width: 100%;
+		height: 100%;
+		margin: 0;
+	}
+}
+.header{
+	position: relative;
+	width: 100%;
+	height: 44px;
+	z-index: 99;
+}
+.header .title{
+	text-align: center;
+	font-size: 1.15em;
+	color: #000;
+	font-weight: 600;
+	line-height: 44px;
+}
+.banner{
+	position: absolute;
+	text-align: center;
+	width: 100%;
+	height: 284px;
+	top: 0;
+	left: 0;
+	padding: 100px 20px 0;
+	box-shadow: 0 4px 15px rgba(122,122,122,.2);
+	z-index: 98;
+}
+.banner .points{
+	font-size: 2em;
+	color: #000;
+}
+.banner .points-text{
+	font-size: 0.9em;
+	color: #999;
+	margin-top: 8px;
+}
+.tab-nav{
+	position: absolute;
+	width: 100%;
+	height: 49px;
+	left: 0;
+	bottom: 0;
+	overflow: hidden;
+}
+.tab-nav ul{
+	position: relative;
+	margin: 0 20px;
+}
+.tab-nav ul li{
+	height: 49px;
+	line-height: 49px;
+	width: 20%;
+	float: left;
+	font-size: 1em;
+	color: #ccc;
+	text-align: center;
+	cursor: pointer;
+}
+.tab-nav ul li.active{
+	color: #fe386b;
+	font-weight: bold;
+}
+.tab-nav .nav-bar{
+	display: block;
+	position: absolute;
+	width: 20%;
+	height: 2px;
+	border-radius: 2px;
+	background-color: #fe386b;
+	bottom: 0;
+	left: 0;
+	transition: ease 0.8s;
+}
+.charts{
+	position: absolute;
+	top: 284px;
+	left: 0;
+	width: 100%;
+	height: calc(100% - 284px);
+	z-index: 1;
+	overflow: hidden;
+}
+
+/*line-chart*/
+.line-xAxis path{
+	stroke-width: 0;
+}
+.line-yAxis path{
+	stroke-width: 0;
+}
+
+/*bar-chart*/
+.barSvg .line-xAxis .tick text{
+	fill: #999;
+}
+
+/*area-chart*/
+.areaSvg .line-xAxis .tick text{
+	fill: rgba(255,255,255,.4);
+	font-size: 1.2em;
+}
+
+/*gauge-chart*/
+.score{
+	text-anchor:middle;
+	font-size: 2.4em;
+	font-weight: bold;
+	fill: #ff536b;
+}

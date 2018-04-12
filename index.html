@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=0" >
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>d3-charts-demo</title>
+    <link rel="stylesheet" type="text/css" href="css/swiper.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+    <div id="wrappe" class="container">
+        <div class="header">
+            <p class="title">D3-charts-demo</p>
+        </div>
+        <div class="banner">
+            <p class="points">13096</p>
+            <p class="points-text">Total Points</p>
+            <div class="tab-nav">
+                <ul id="chart-nav">
+                    <li class="active">Line</li>
+                    <li>Bar</li>
+                    <li>Area</li>
+                    <li>Gauge</li>
+                    <li>Scale</li>
+                    <div class="clearfix"></div>
+                    <div id="indexBar" class="nav-bar"></div>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="charts swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" id="line-chart"></div>
+                <div class="swiper-slide" id="bar-chart"></div>
+                <div class="swiper-slide" id="area-chart"></div>
+                <div class="swiper-slide" id="gauge-chart"></div>
+                <div class="swiper-slide" id="progress-chart"></div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <script src="build/d3.min.js"></script>
+    <script src="build/swiper.min.js"></script>               
+
+    <script src="js/line-chart.js"></script>
+    <script src="js/bar-chart.js"></script>
+    <script src="js/area-chart.js"></script>
+    <script src="js/gauge-chart.js"></script>
+    <script src="js/progress-chart.js"></script>
+    <script>
+        var mySwiper = new Swiper ('.swiper-container',{
+          on: {
+            slideChangeTransitionEnd: function(){
+              var n = this.activeIndex;
+              navAnim(n);
+            },
+          },
+        });   
+
+        var ul = document.getElementById('chart-nav');  
+        var list = ul.getElementsByTagName("li");
+        var barWidth=document.getElementById("indexBar").offsetWidth;
+          
+        function foo(){'use strict'  
+            for(let i = 0, len = list.length; i < len; i++){  
+                list[i].onclick = function(){  
+                    mySwiper.slideTo(i, 800, false);
+                    navAnim(i);
+                }  
+            }  
+        }  
+        foo();   
+
+        function navAnim(i){
+            ul.querySelector("li.active").setAttribute("class","");
+            ul.querySelectorAll("li")[i].setAttribute("class","active");
+            ul.querySelector(".nav-bar").style.left = i*barWidth + "px";
+        }   
+    </script>
+</body>
+</html>
